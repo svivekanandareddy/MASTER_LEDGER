@@ -12,9 +12,14 @@ connectDB();
 // 3. Global Middleware
 // Updated CORS to be safer and allow frontend communication
 app.use(cors({
-    origin: "*", 
-    credentials: true
+  origin: [
+    "https://master-ledger-lbpcde.vercel.app",
+    "http://localhost:3000"
+  ],
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
 }));
+
 app.use(express.json());
 
 // 4. Routes (BOTH Data and Auth are required)
