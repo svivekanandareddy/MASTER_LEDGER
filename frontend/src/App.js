@@ -80,7 +80,7 @@ const App = () => {
             <div className="container">
                 <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                     <div onClick={() => window.location.href = "/"} style={{ cursor: 'pointer' }}>
-                        <h1>Vivek & Co.</h1>
+                        <h1>MASTER LEDGER</h1>
                         <p style={{ fontSize: '0.8rem', color: '#718096' }}>{isAdmin ? "🛠️ Admin Mode" : "👁️ Guest Mode"}</p>
                     </div>
                     <div style={{ display: 'flex', gap: '10px' }}>
