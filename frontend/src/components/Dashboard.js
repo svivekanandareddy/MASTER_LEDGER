@@ -174,17 +174,31 @@ const Dashboard = ({ data, isAdmin, aliases, refreshData }) => {
                                     <tbody>
 
                                         {stats.egg.payments.slice().reverse().map(p => (
-                                            <tr key={p._id}>
-                                                <td>{new Date(p.date).toLocaleDateString()}</td>
-                                                <td><b>{aliases[p.payer || p.n]}</b></td>
-                                                <td>₹{p.amount}</td>
-                                                {isAdmin && (
-                                                    <td>
-                                                        <button className="del" onClick={()=>handleDelete(p._id)}>✕</button>
-                                                    </td>
-                                                )}
-                                            </tr>
-                                        ))}
+
+<tr key={p._id}>
+
+<td>
+{new Date(p.date).toISOString().split("T")[0]}
+</td>
+
+<td>
+<b>{aliases[p.payer || p.n]}</b>
+</td>
+
+<td>
+₹{p.amount}<br/>
+<small>@ ₹{p.pricePerEgg || 6}/egg</small>
+</td>
+
+{isAdmin && (
+<td>
+<button className="del" onClick={()=>handleDelete(p._id)}>✕</button>
+</td>
+)}
+
+</tr>
+
+))}
 
                                     </tbody>
                                 </table>
@@ -201,7 +215,11 @@ const Dashboard = ({ data, isAdmin, aliases, refreshData }) => {
                                         {stats.egg.history.slice().reverse().map(l => (
                                             <tr key={l._id}>
                                                 <td>{new Date(l.date).toLocaleDateString()}</td>
-                                                <td>{l.consumptionData || l.t}</td>
+                                                <td>
+{l.consumptionData || l.t}
+<br/>
+<small>@ ₹{l.pricePerEgg || 6}/egg</small>
+</td>
                                                 {isAdmin && (
                                                     <td>
                                                         <button className="del" onClick={()=>handleDelete(l._id)}>✕</button>
